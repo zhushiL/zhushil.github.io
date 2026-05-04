@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Personal academic homepage of Shilin Zhu, focusing on 3D computer vision and embodied intelligence.">
+  <title>Shilin Zhu | 3D Computer Vision & Embodied Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --panel: #f7fafb;
+      --ink: #10202f;
+      --muted: #546475;
+      --soft: #8a99a8;
+      --line: #dfe8ee;
+      --line-strong: #cad7df;
+      --accent: #0e7c7b;
+      --accent-strong: #075f5d;
+      --accent-soft: rgba(14, 124, 123, 0.08);
+      --gold: #b7791f;
+      --rose: #b83255;
+      --shadow: 0 18px 40px rgba(16, 32, 47, 0.12);
+      --font-main: "Inter", Arial, sans-serif;
+      --font-serif: "Playfair Display", Georgia, serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-main);
+      line-height: 1.62;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 160ms ease, border-color 160ms ease, background 160ms ease, transform 160ms ease;
+    }
+
+    a:hover {
+      color: var(--accent);
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 312px minmax(0, 1fr);
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 3rem 2rem;
+      overflow-y: auto;
+      background: linear-gradient(180deg, #f7fafb 0%, #f1f6f7 100%);
+      border-right: 1px solid var(--line);
+    }
+
+    .profile-photo {
+      width: 164px;
+      height: 164px;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 50%;
+      border: 5px solid #ffffff;
+      box-shadow: var(--shadow);
+      margin-bottom: 1.45rem;
+    }
+
+    .name {
+      margin: 0;
+      font-family: var(--font-serif);
+      font-size: 2.1rem;
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .name-cn {
+      margin: 0.26rem 0 0;
+      color: var(--muted);
+      font-size: 1rem;
+      font-weight: 650;
+    }
+
+    .role {
+      margin: 0.9rem 0 1.55rem;
+      color: var(--muted);
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    .contact-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .contact-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .contact-list i {
+      width: 18px;
+      padding-top: 0.25rem;
+      color: var(--soft);
+      text-align: center;
+    }
+
+    .quick-links {
+      display: flex;
+      gap: 0.7rem;
+      margin-top: 1.4rem;
+      flex-wrap: wrap;
+    }
+
+    .icon-button {
+      width: 38px;
+      height: 38px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: #ffffff;
+      color: var(--muted);
+      box-shadow: 0 1px 1px rgba(16, 32, 47, 0.03);
+    }
+
+    .icon-button:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    .nav {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      margin-top: 2.15rem;
+    }
+
+    .nav a {
+      width: fit-content;
+      padding: 0.45rem 0;
+      color: var(--muted);
+      border-bottom: 1px solid transparent;
+      font-weight: 600;
+      font-size: 0.94rem;
+    }
+
+    .nav a:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    .copyright {
+      margin-top: 2rem;
+      color: var(--soft);
+      font-size: 0.76rem;
+    }
+
+    .main {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 4rem 5rem;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(300px, 1fr);
+      gap: 4rem;
+      align-items: start;
+      margin-bottom: 4.8rem;
+    }
+
+    section {
+      scroll-margin-top: 2rem;
+      margin-bottom: 4.8rem;
+    }
+
+    .intro-grid section {
+      margin-bottom: 0;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin: 0 0 1.45rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--line);
+      font-family: var(--font-serif);
+      font-size: 1.85rem;
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+
+    .section-note {
+      margin-left: auto;
+      color: var(--soft);
+      font-family: var(--font-main);
+      font-size: 0.86rem;
+      font-weight: 500;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    .lead p {
+      margin: 0 0 1rem;
+    }
+
+    .lead strong {
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .inline-link {
+      color: var(--ink);
+      border-bottom: 1px solid var(--line-strong);
+      font-weight: 650;
+    }
+
+    .inline-link:hover {
+      border-bottom-color: var(--accent);
+    }
+
+    .notice {
+      display: flex;
+      gap: 0.85rem;
+      margin-top: 1.4rem;
+      padding: 1rem 1.15rem;
+      border-left: 4px solid var(--accent);
+      border-radius: 0 7px 7px 0;
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+      font-size: 0.95rem;
+    }
+
+    .notice i {
+      padding-top: 0.25rem;
+      flex: 0 0 auto;
+    }
+
+    .news-list {
+      max-height: 398px;
+      overflow-y: auto;
+      padding-right: 0.4rem;
+    }
+
+    .news-list::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .news-list::-webkit-scrollbar-thumb {
+      background: #c6d4dc;
+      border-radius: 999px;
+    }
+
+    .news-row {
+      display: grid;
+      grid-template-columns: 86px minmax(0, 1fr);
+      gap: 1rem;
+      padding: 0.66rem 0;
+      border-bottom: 1px solid #edf3f6;
+      color: var(--muted);
+      font-size: 0.91rem;
+    }
+
+    .news-row:last-child {
+      border-bottom: 0;
+    }
+
+    .news-date {
+      color: var(--soft);
+      font-family: "Courier New", monospace;
+      font-size: 0.86rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .education-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .edu-item {
+      padding-bottom: 1rem;
+      border-bottom: 1px dashed var(--line);
+    }
+
+    .edu-school {
+      font-weight: 750;
+      color: var(--ink);
+      margin-bottom: 0.25rem;
+    }
+
+    .edu-meta {
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .pub-item {
+      display: grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+      gap: 2.3rem;
+      align-items: start;
+      padding-bottom: 3rem;
+      margin-bottom: 3rem;
+      border-bottom: 1px dashed var(--line);
+    }
+
+    .pub-item:last-child {
+      margin-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .media-frame {
+      display: block;
+      width: 100%;
+      padding: 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #f3f7f8;
+      color: inherit;
+      cursor: zoom-in;
+      font: inherit;
+      text-align: left;
+      box-shadow: 0 1px 2px rgba(16, 32, 47, 0.06);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .media-frame:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(16, 32, 47, 0.12);
+    }
+
+    .media-frame:focus-visible {
+      outline: 3px solid rgba(14, 124, 123, 0.32);
+      outline-offset: 3px;
+    }
+
+    .media-frame video,
+    .media-frame img,
+    .visual-fallback {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: contain;
+      background: #ffffff;
+    }
+
+    .visual-fallback {
+      position: relative;
+      padding: 1.2rem;
+      background:
+        linear-gradient(135deg, rgba(14, 124, 123, 0.12), rgba(183, 121, 31, 0.12)),
+        repeating-linear-gradient(90deg, rgba(16, 32, 47, 0.08) 0 1px, transparent 1px 18px),
+        repeating-linear-gradient(0deg, rgba(16, 32, 47, 0.06) 0 1px, transparent 1px 18px);
+      color: var(--ink);
+    }
+
+    .visual-fallback span {
+      position: absolute;
+      left: 1rem;
+      bottom: 0.9rem;
+      font-weight: 750;
+      font-size: 0.9rem;
+      color: rgba(16, 32, 47, 0.8);
+    }
+
+    .pub-title {
+      margin: 0 0 0.6rem;
+      color: var(--ink);
+      font-size: 1.23rem;
+      font-weight: 760;
+      line-height: 1.32;
+    }
+
+    .tag-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      min-height: 25px;
+      padding: 0.2rem 0.62rem;
+      border-radius: 5px;
+      color: #ffffff;
+      font-size: 0.74rem;
+      font-weight: 750;
+      line-height: 1.2;
+    }
+
+    .tag-conf {
+      background: #293947;
+    }
+
+    .tag-journal {
+      background: var(--accent);
+    }
+
+    .tag-award {
+      background: var(--gold);
+    }
+
+    .tag-wip {
+      background: #6d7682;
+    }
+
+    .authors {
+      margin-bottom: 0.85rem;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .me {
+      color: var(--ink);
+      font-weight: 750;
+      text-decoration: underline;
+      text-decoration-color: var(--accent);
+      text-decoration-thickness: 2px;
+      text-underline-offset: 3px;
+    }
+
+    .pub-actions {
+      display: flex;
+      gap: 0.55rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .text-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      min-height: 31px;
+      padding: 0.32rem 0.7rem;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #ffffff;
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-weight: 650;
+      cursor: pointer;
+    }
+
+    .text-button:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .abstract {
+      margin: 0;
+      padding: 0.86rem 1rem;
+      border-left: 3px solid var(--line-strong);
+      border-radius: 0 7px 7px 0;
+      background: #f7fafb;
+      color: var(--muted);
+      font-size: 0.91rem;
+    }
+
+    .bibtex {
+      display: none;
+      margin: 0.75rem 0 0;
+      padding: 0.9rem 1rem;
+      overflow-x: auto;
+      border-radius: 7px;
+      background: #162434;
+      color: #dbe7ee;
+      font-family: Menlo, Monaco, Consolas, monospace;
+      font-size: 0.76rem;
+      line-height: 1.45;
+    }
+
+    .experience-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1.2rem;
+      padding-bottom: 1.4rem;
+      border-bottom: 1px dashed var(--line);
+    }
+
+    .experience-item h3 {
+      margin: 0 0 0.35rem;
+      font-size: 1.08rem;
+      line-height: 1.35;
+    }
+
+    .experience-place {
+      color: var(--muted);
+      font-weight: 650;
+    }
+
+    .experience-date {
+      color: var(--soft);
+      font-family: "Courier New", monospace;
+      font-size: 0.87rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .experience-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
+      margin-top: 1.1rem;
+    }
+
+    .experience-gallery img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #f3f7f8;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      background: rgba(10, 18, 28, 0.82);
+    }
+
+    .lightbox.is-open {
+      display: flex;
+    }
+
+    .lightbox-shell {
+      position: relative;
+      width: min(1100px, 92vw);
+      max-height: 88vh;
+    }
+
+    .lightbox-body img,
+    .lightbox-body video {
+      display: block;
+      width: 100%;
+      max-height: 84vh;
+      object-fit: contain;
+      border-radius: 8px;
+      background: #ffffff;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.36);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -0.9rem;
+      right: -0.9rem;
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(255, 255, 255, 0.38);
+      border-radius: 50%;
+      background: #ffffff;
+      color: var(--ink);
+      cursor: pointer;
+      font-size: 1rem;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+    }
+
+    body.lightbox-open {
+      overflow: hidden;
+    }
+
+    .compact-list {
+      margin: 0.85rem 0 0;
+      padding-left: 1.1rem;
+      color: var(--muted);
+    }
+
+    .compact-list li {
+      margin-bottom: 0.5rem;
+    }
+
+    .honor-list {
+      margin: 0;
+      padding-left: 1.15rem;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .honor-list strong {
+      color: var(--ink);
+      font-weight: 750;
+    }
+
+    @media (max-width: 1180px) {
+      .main {
+        padding: 3.6rem 3.4rem;
+      }
+
+      .intro-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .news-list {
+        max-height: none;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        position: relative;
+        height: auto;
+        align-items: center;
+        text-align: center;
+        padding: 2.8rem 1.5rem;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .contact-list li {
+        justify-content: center;
+      }
+
+      .quick-links {
+        justify-content: center;
+      }
+
+      .nav {
+        display: none;
+      }
+
+      .main {
+        padding: 3rem 1.4rem;
+      }
+
+      .section-title {
+        font-size: 1.62rem;
+        flex-wrap: wrap;
+      }
+
+      .section-note {
+        width: 100%;
+        margin-left: 0;
+      }
+
+      .pub-item,
+      .experience-item {
+        grid-template-columns: 1fr;
+      }
+
+      .experience-gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .pub-item {
+        gap: 1.4rem;
+        padding-bottom: 2.4rem;
+        margin-bottom: 2.4rem;
+      }
+
+      .experience-date {
+        white-space: normal;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div>
+        <img src="assets/profile/profile.jpg" alt="Portrait of Shilin Zhu" class="profile-photo">
+        <h1 class="name">Shilin Zhu</h1>
+        <p class="name-cn">祝石林</p>
+        <p class="role">Third-year M.S. Student<br>Northeastern University</p>
+
+        <ul class="contact-list" aria-label="Contact information">
+          <li><i class="fa-solid fa-building-columns"></i><span>College of Information Science and Engineering, NEU</span></li>
+          <li><i class="fa-solid fa-location-dot"></i><span>Shenyang, China</span></li>
+          <li><i class="fa-solid fa-envelope"></i><a href="mailto:zhusl2@mails.neu.edu.cn">zhusl2@mails.neu.edu.cn</a></li>
+        </ul>
+
+        <div class="quick-links" aria-label="External links">
+          <a class="icon-button" href="mailto:zhusl2@mails.neu.edu.cn" title="Email" aria-label="Email">
+            <i class="fa-solid fa-envelope"></i>
+          </a>
+          <a class="icon-button" href="https://scholar.google.com/citations?user=hgpyhNYAAAAJ&hl=zh-CN" title="Google Scholar" aria-label="Google Scholar">
+            <i class="fa-solid fa-graduation-cap"></i>
+          </a>
+          <a class="icon-button" href="https://github.com/zhushiL" title="GitHub" aria-label="GitHub">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </div>
+
+        <nav class="nav" aria-label="Page navigation">
+          <a href="#about">About</a>
+          <a href="#news">News</a>
+          <a href="#publications">Publications</a>
+          <a href="#experience">Experience</a>
+          <a href="#honors">Honors</a>
+        </nav>
+      </div>
+
+      <div class="copyright">&copy; 2026 Shilin Zhu</div>
+    </aside>
+
+    <main class="main">
+      <div class="intro-grid">
+        <section id="about">
+          <h2 class="section-title">About Me</h2>
+          <div class="lead">
+            <p>
+              I am a third-year master's student in <strong>Control Science and Engineering</strong> at
+              <a class="inline-link" href="https://www.neu.edu.cn/">Northeastern University</a>.
+              I will soon join <a class="inline-link" href="https://www.sjtu.edu.cn/">Shanghai Jiao Tong University</a>
+              as a research assistant, advised by
+              <a class="inline-link" href="https://naoce.sjtu.edu.cn/teachers/10294.html">Prof. Daolin Ma</a>.
+            </p>
+            <p>
+              My research focuses on <strong>3D computer vision</strong> and
+              <strong>embodied intelligence</strong>, especially scalable 3D perception, scene completion,
+              and robot manipulation.
+            </p>
+            <div class="notice">
+              <i class="fa-solid fa-satellite-dish"></i>
+              <div>
+                <strong>Recent focus:</strong> I am working on World Action Model research for embodied
+                algorithms, with an emphasis on perception-conditioned robot manipulation.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="news">
+          <h2 class="section-title">News</h2>
+          <div class="news-list">
+            <div class="news-row">
+              <div class="news-date">2026/02</div>
+              <div>PatchScene was accepted to <strong>CVPR 2026</strong>.</div>
+            </div>
+            <div class="news-row">
+              <div class="news-date">2026/01</div>
+              <div>VAP-SAM was accepted by <strong>IEEE Transactions on Instrumentation and Measurement</strong>.</div>
+            </div>
+            <div class="news-row">
+              <div class="news-date">2025/05</div>
+              <div>EM-DETR was accepted by <strong>IEEE Sensors Journal</strong>.</div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <section id="publications">
+        <h2 class="section-title">
+          Publications
+          <span class="section-note">(* Equal contribution)</span>
+        </h2>
+
+        <article class="pub-item">
+          <button class="media-frame media-zoom" type="button" data-media-type="video" data-media-src="assets/publications/patchscene/cover.mp4" data-media-alt="PatchScene temporal completion video" aria-label="Enlarge PatchScene cover video">
+            <video src="assets/publications/patchscene/cover.mp4" autoplay muted loop playsinline></video>
+          </button>
+          <div>
+            <h3 class="pub-title">
+              <a href="papers/patchscene/PatchScene.pdf">PatchScene: Patch-based Voxel Diffusion for Large-Scale Scene Completion</a>
+            </h3>
+            <div class="tag-row">
+              <span class="tag tag-conf">CVPR 2026</span>
+              <span class="tag tag-award"><i class="fa-solid fa-star"></i> Co-first Author</span>
+            </div>
+            <div class="authors">
+              Qingdong Xu*, Jiajun Zhu*, <span class="me">Shilin Zhu*</span>, Xinjing He, Chao Lu,
+              Huanran Wang, Jiyao Zhang
+            </div>
+            <div class="pub-actions">
+              <a class="text-button" href="papers/patchscene/PatchScene.pdf"><i class="fa-regular fa-file-pdf"></i> Paper</a>
+              <a class="text-button" href="assets/publications/patchscene/demo.mp4"><i class="fa-regular fa-circle-play"></i> Demo</a>
+              <button class="text-button" type="button" onclick="toggleBibtex('bib-patchscene')">
+                <i class="fa-solid fa-quote-right"></i> BibTeX
+              </button>
+            </div>
+            <p class="abstract">
+              A diffusion framework for large-scale LiDAR scene completion. PatchScene generates fine-grained
+              geometry in local voxel patches, fuses spatial and temporal context, and expands completion through
+              an annular-flow strategy for scalable outdoor reconstruction.
+            </p>
+            <pre id="bib-patchscene" class="bibtex">@inproceedings{xu2026patchscene,
+  title={PatchScene: Patch-based Voxel Diffusion for Large-Scale Scene Completion},
+  author={Xu, Qingdong and Zhu, Jiajun and Zhu, Shilin and He, Xinjing and Lu, Chao and Wang, Huanran and Zhang, Jiyao},
+  booktitle={Conference on Computer Vision and Pattern Recognition},
+  year={2026}
+}</pre>
+          </div>
+        </article>
+
+        <article class="pub-item">
+          <button class="media-frame media-zoom" type="button" data-media-type="image" data-media-src="assets/publications/vapsam/cover.png" data-media-alt="VAP-SAM overview" aria-label="Enlarge VAP-SAM cover image">
+            <img src="assets/publications/vapsam/cover.png" alt="VAP-SAM overview">
+          </button>
+          <div>
+            <h3 class="pub-title">
+              <a href="https://doi.org/10.1109/TIM.2026.3660401">VAP-SAM: Prompt-Free SAM for Insubstantial Gas Segmentation</a>
+            </h3>
+            <div class="tag-row">
+              <span class="tag tag-journal">IEEE TIM 2026</span>
+              <span class="tag tag-award">JCR Q1</span>
+            </div>
+            <div class="authors"><span class="me">Shilin Zhu</span>, Qi Wang, Yixuan Jing, Mengge Yang</div>
+            <div class="pub-actions">
+              <a class="text-button" href="https://doi.org/10.1109/TIM.2026.3660401"><i class="fa-regular fa-file-lines"></i> Paper</a>
+              <a class="text-button" href="assets/publications/vapsam/demo.mp4"><i class="fa-regular fa-circle-play"></i> Demo</a>
+              <button class="text-button" type="button" onclick="toggleBibtex('bib-vapsam')">
+                <i class="fa-solid fa-quote-right"></i> BibTeX
+              </button>
+            </div>
+            <p class="abstract">
+              Builds an open-source gas segmentation dataset and replaces manual prompt engineering with a
+              visual autonomous perception module. The method distills prompt-trained SAM priors into a
+              prompt-free segmentation pipeline.
+            </p>
+            <pre id="bib-vapsam" class="bibtex">@article{zhu2026vapsam,
+  title={VAP-SAM: Prompt-Free SAM for Insubstantial Gas Segmentation},
+  author={Zhu, Shilin and Wang, Qi and Jing, Yixuan and Yang, Mengge},
+  journal={IEEE Transactions on Instrumentation and Measurement},
+  volume={75},
+  pages={1--9},
+  year={2026},
+  doi={10.1109/TIM.2026.3660401}
+}</pre>
+          </div>
+        </article>
+
+        <article class="pub-item">
+          <button class="media-frame media-zoom" type="button" data-media-type="image" data-media-src="assets/publications/emdetr/cover.png" data-media-alt="EM-DETR overview" aria-label="Enlarge EM-DETR cover image">
+            <img src="assets/publications/emdetr/cover.png" alt="EM-DETR overview">
+          </button>
+          <div>
+            <h3 class="pub-title">
+              <a href="https://doi.org/10.1109/JSEN.2025.3558317">EM-DETR: Efficient Multiscale DETR for Gas Leak Detection Based on Infrared Imaging</a>
+            </h3>
+            <div class="tag-row">
+              <span class="tag tag-journal">IEEE Sensors Journal 2025</span>
+              <span class="tag tag-award">JCR Q1</span>
+            </div>
+            <div class="authors">Qi Wang, <span class="me">Shilin Zhu</span>, Zhenlin Lu, Yunlong Sun, Yizhuo Qian</div>
+            <div class="pub-actions">
+              <a class="text-button" href="https://doi.org/10.1109/JSEN.2025.3558317"><i class="fa-regular fa-file-lines"></i> Paper</a>
+              <button class="text-button" type="button" onclick="toggleBibtex('bib-emdetr')">
+                <i class="fa-solid fa-quote-right"></i> BibTeX
+              </button>
+            </div>
+            <p class="abstract">
+              An efficient infrared gas leak detector that reduces redundant feature extraction, strengthens
+              sensitivity to gas target spatial cues, and improves multi-scale feature fusion for small and
+              diffuse gas regions.
+            </p>
+            <pre id="bib-emdetr" class="bibtex">@article{zhu2025emdetr,
+  title={EM-DETR: Efficient Multiscale DETR for Gas Leak Detection Based on Infrared Imaging},
+  author={Wang, Qi and Zhu, Shilin and Lu, Zhenlin and Sun, Yunlong and Qian, Yizhuo},
+  journal={IEEE Sensors Journal},
+  volume={25},
+  number={11},
+  pages={20538--20546},
+  year={2025},
+  doi={10.1109/JSEN.2025.3558317}
+}</pre>
+          </div>
+        </article>
+      </section>
+
+      <section id="experience">
+        <h2 class="section-title">Experience</h2>
+        <div class="experience-item">
+          <div>
+            <h3>Data Simulation and Embodied Intelligence WAM Algorithms</h3>
+            <div class="experience-place">
+              <a class="inline-link" href="https://paxini.com/cn/">PaXini Tech</a>, advised by
+              <a class="inline-link" href="https://medialab.sjtu.edu.cn/author/zhengxue-cheng/">Prof. Zhengxue Cheng</a>
+            </div>
+            <ul class="compact-list">
+              <li>Retargeted hand-collected grasping data and used Isaac Lab to replay trajectories for LeRobot-style Pi0.5 training and real-world validation.</li>
+              <li>Pretrained a tactile encoder with MAE-style random masking to recover 3D point positions and tactile force signals.</li>
+              <li>Integrated tactile representations into Lingbot-VA with image and action denoising while preserving causal masking for future-frame isolation.</li>
+            </ul>
+            <div class="experience-gallery" aria-label="PaXini experience photos">
+              <img src="assets/experience/paxini/paxini.png" alt="PaXini experience photo 1">
+              <img src="assets/experience/paxini/paxini2.png" alt="PaXini experience photo 2">
+            </div>
+          </div>
+          <div class="experience-date">2025.12 - 2026.04</div>
+        </div>
+      </section>
+
+      <section id="honors">
+        <h2 class="section-title">Honors & Awards</h2>
+        <ul class="honor-list">
+          <li>Shenyang Aircraft Corporation Luo Yang Inspirational Scholarship, 2026</li>
+          <li>First-class Scholarship, Northeastern University, 2023, 2024, 2025</li>
+          <li>Outstanding Graduate of Anhui Province, 2023</li>
+          <li>National First Prize, National University Student Intelligent Car Race, 2022</li>
+          <li>First Prize, Anhui Electronic Design Competition, 2022</li>
+          <li>National Inspirational Scholarship, 2020</li>
+        </ul>
+      </section>
+    </main>
+  </div>
+
+  <div class="lightbox" id="media-lightbox" aria-hidden="true">
+    <div class="lightbox-shell" role="dialog" aria-modal="true" aria-label="Media preview">
+      <button class="lightbox-close" type="button" aria-label="Close media preview" onclick="closeLightbox()">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="lightbox-body" id="lightbox-body"></div>
+    </div>
+  </div>
+
+  <script>
+    function toggleBibtex(id) {
+      const block = document.getElementById(id);
+      if (!block) return;
+      block.style.display = block.style.display === "block" ? "none" : "block";
+    }
+
+    function openLightbox(type, src, alt) {
+      const lightbox = document.getElementById("media-lightbox");
+      const body = document.getElementById("lightbox-body");
+      if (!lightbox || !body) return;
+
+      body.innerHTML = "";
+      if (type === "video") {
+        const video = document.createElement("video");
+        video.src = src;
+        video.controls = true;
+        video.autoplay = true;
+        video.loop = true;
+        video.muted = true;
+        video.playsInline = true;
+        body.appendChild(video);
+      } else {
+        const image = document.createElement("img");
+        image.src = src;
+        image.alt = alt || "Publication media preview";
+        body.appendChild(image);
+      }
+
+      lightbox.classList.add("is-open");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.classList.add("lightbox-open");
+    }
+
+    function closeLightbox() {
+      const lightbox = document.getElementById("media-lightbox");
+      const body = document.getElementById("lightbox-body");
+      if (!lightbox || !body) return;
+
+      lightbox.classList.remove("is-open");
+      lightbox.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("lightbox-open");
+      body.innerHTML = "";
+    }
+
+    document.querySelectorAll(".media-zoom").forEach((button) => {
+      button.addEventListener("click", () => {
+        openLightbox(button.dataset.mediaType, button.dataset.mediaSrc, button.dataset.mediaAlt);
+      });
+    });
+
+    document.getElementById("media-lightbox")?.addEventListener("click", (event) => {
+      if (event.target.id === "media-lightbox") closeLightbox();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeLightbox();
+    });
+  </script>
+</body>
+</html>

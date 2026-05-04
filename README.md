@@ -1,2 +1,3 @@
 # zhushil.github.io
-Personal website and academic portfolio of Shilin Zhu (祝石林).
+
+Static academic homepage for Shilin Zhu, designed for GitHub Pages.

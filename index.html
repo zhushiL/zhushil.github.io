@@ -136,6 +136,31 @@
       flex-wrap: wrap;
     }
 
+    .language-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 32px;
+      margin-top: 1rem;
+      padding: 0.25rem 0.8rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #ffffff;
+      color: var(--muted);
+      font: inherit;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: color 160ms ease, border-color 160ms ease, background 160ms ease, transform 160ms ease;
+    }
+
+    .language-toggle:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      transform: translateY(-1px);
+    }
+
     .icon-button {
       width: 38px;
       height: 38px;
@@ -710,11 +735,11 @@
         <img src="assets/profile/profile.jpg" alt="Portrait of Shilin Zhu" class="profile-photo">
         <h1 class="name">Shilin Zhu</h1>
         <p class="name-cn">祝石林</p>
-        <p class="role">Third-year M.S. Student<br>Northeastern University</p>
+        <p class="role" data-i18n-html="role">Third-year M.S. Student<br>Northeastern University</p>
 
         <ul class="contact-list" aria-label="Contact information">
-          <li><i class="fa-solid fa-building-columns"></i><span>College of Information Science and Engineering, NEU</span></li>
-          <li><i class="fa-solid fa-location-dot"></i><span>Shenyang, China</span></li>
+          <li><i class="fa-solid fa-building-columns"></i><span data-i18n="affiliation">College of Information Science and Engineering, NEU</span></li>
+          <li><i class="fa-solid fa-location-dot"></i><span data-i18n="location">Shenyang, China</span></li>
           <li><i class="fa-solid fa-envelope"></i><a href="mailto:zhusl2@mails.neu.edu.cn">zhusl2@mails.neu.edu.cn</a></li>
         </ul>
 
@@ -730,12 +755,14 @@
           </a>
         </div>
 
+        <button class="language-toggle" type="button" onclick="toggleLanguage()" data-i18n="languageToggle">中文</button>
+
         <nav class="nav" aria-label="Page navigation">
-          <a href="#about">About</a>
-          <a href="#news">News</a>
-          <a href="#publications">Publications</a>
-          <a href="#experience">Experience</a>
-          <a href="#honors">Honors</a>
+          <a href="#about" data-i18n="navAbout">About</a>
+          <a href="#news" data-i18n="navNews">News</a>
+          <a href="#publications" data-i18n="navPublications">Publications</a>
+          <a href="#experience" data-i18n="navExperience">Experience</a>
+          <a href="#honors" data-i18n="navHonors">Honors</a>
         </nav>
       </div>
 
@@ -745,23 +772,23 @@
     <main class="main">
       <div class="intro-grid">
         <section id="about">
-          <h2 class="section-title">About Me</h2>
+          <h2 class="section-title" data-i18n="aboutTitle">About Me</h2>
           <div class="lead">
-            <p>
+            <p data-i18n-html="aboutP1">
               I am a third-year master's student in <strong>Control Science and Engineering</strong> at
               <a class="inline-link" href="https://www.neu.edu.cn/">Northeastern University</a>.
               I will soon join <a class="inline-link" href="https://www.sjtu.edu.cn/">Shanghai Jiao Tong University</a>
               as a research assistant, advised by
               <a class="inline-link" href="https://naoce.sjtu.edu.cn/teachers/10294.html">Prof. Daolin Ma</a>.
             </p>
-            <p>
+            <p data-i18n-html="aboutP2">
               My research focuses on <strong>3D computer vision</strong> and
               <strong>embodied intelligence</strong>, especially scalable 3D perception, scene completion,
               and robot manipulation.
             </p>
             <div class="notice">
               <i class="fa-solid fa-satellite-dish"></i>
-              <div>
+              <div data-i18n-html="recentFocus">
                 <strong>Recent focus:</strong> I am working on World Action Model research for embodied
                 algorithms, with an emphasis on perception-conditioned robot manipulation.
               </div>
@@ -770,19 +797,19 @@
         </section>
 
         <section id="news">
-          <h2 class="section-title">News</h2>
+          <h2 class="section-title" data-i18n="newsTitle">News</h2>
           <div class="news-list">
             <div class="news-row">
               <div class="news-date">2026/02</div>
-              <div>PatchScene was accepted to <strong>CVPR 2026</strong>.</div>
+              <div data-i18n-html="newsPatchScene">PatchScene was accepted to <strong>CVPR 2026</strong>.</div>
             </div>
             <div class="news-row">
               <div class="news-date">2026/01</div>
-              <div>VAP-SAM was accepted by <strong>IEEE Transactions on Instrumentation and Measurement</strong>.</div>
+              <div data-i18n-html="newsVapSam">VAP-SAM was accepted by <strong>IEEE Transactions on Instrumentation and Measurement</strong>.</div>
             </div>
             <div class="news-row">
               <div class="news-date">2025/05</div>
-              <div>EM-DETR was accepted by <strong>IEEE Sensors Journal</strong>.</div>
+              <div data-i18n-html="newsEmDetr">EM-DETR was accepted by <strong>IEEE Sensors Journal</strong>.</div>
             </div>
           </div>
         </section>
@@ -790,13 +817,13 @@
 
       <section id="publications">
         <h2 class="section-title">
-          Publications
-          <span class="section-note">(* Equal contribution)</span>
+          <span data-i18n="publicationsTitle">Publications</span>
+          <span class="section-note" data-i18n="equalContribution">(* Equal contribution)</span>
         </h2>
 
         <article class="pub-item">
           <button class="media-frame media-zoom" type="button" data-media-type="video" data-media-src="assets/publications/patchscene/cover.mp4" data-media-alt="PatchScene temporal completion video" aria-label="Enlarge PatchScene cover video">
-            <video src="assets/publications/patchscene/cover.mp4" autoplay muted loop playsinline></video>
+            <img src="assets/publications/patchscene/cover.jpg" alt="PatchScene temporal completion preview" loading="lazy">
           </button>
           <div>
             <h3 class="pub-title">
@@ -804,20 +831,20 @@
             </h3>
             <div class="tag-row">
               <span class="tag tag-conf">CVPR 2026</span>
-              <span class="tag tag-award"><i class="fa-solid fa-star"></i> Co-first Author</span>
+              <span class="tag tag-award"><i class="fa-solid fa-star"></i> <span data-i18n="coFirstAuthor">Co-first Author</span></span>
             </div>
             <div class="authors">
               Qingdong Xu*, Jiajun Zhu*, <span class="me">Shilin Zhu*</span>, Xinjing He, Chao Lu,
               Huanran Wang, Jiyao Zhang
             </div>
             <div class="pub-actions">
-              <a class="text-button" href="papers/patchscene/PatchScene.pdf"><i class="fa-regular fa-file-pdf"></i> Paper</a>
-              <a class="text-button" href="assets/publications/patchscene/demo.mp4"><i class="fa-regular fa-circle-play"></i> Demo</a>
+              <a class="text-button" href="papers/patchscene/PatchScene.pdf" data-i18n-html="paperButtonPdf"><i class="fa-regular fa-file-pdf"></i> Paper</a>
+              <a class="text-button" href="assets/publications/patchscene/demo.mp4" data-i18n-html="demoButton"><i class="fa-regular fa-circle-play"></i> Demo</a>
               <button class="text-button" type="button" onclick="toggleBibtex('bib-patchscene')">
                 <i class="fa-solid fa-quote-right"></i> BibTeX
               </button>
             </div>
-            <p class="abstract">
+            <p class="abstract" data-i18n="abstractPatchScene">
               A diffusion framework for large-scale LiDAR scene completion. PatchScene generates fine-grained
               geometry in local voxel patches, fuses spatial and temporal context, and expands completion through
               an annular-flow strategy for scalable outdoor reconstruction.
@@ -833,7 +860,7 @@
 
         <article class="pub-item">
           <button class="media-frame media-zoom" type="button" data-media-type="image" data-media-src="assets/publications/vapsam/cover.png" data-media-alt="VAP-SAM overview" aria-label="Enlarge VAP-SAM cover image">
-            <img src="assets/publications/vapsam/cover.png" alt="VAP-SAM overview">
+            <img src="assets/publications/vapsam/cover.png" alt="VAP-SAM overview" loading="lazy">
           </button>
           <div>
             <h3 class="pub-title">
@@ -845,13 +872,13 @@
             </div>
             <div class="authors"><span class="me">Shilin Zhu</span>, Qi Wang, Yixuan Jing, Mengge Yang</div>
             <div class="pub-actions">
-              <a class="text-button" href="https://doi.org/10.1109/TIM.2026.3660401"><i class="fa-regular fa-file-lines"></i> Paper</a>
-              <a class="text-button" href="assets/publications/vapsam/demo.mp4"><i class="fa-regular fa-circle-play"></i> Demo</a>
+              <a class="text-button" href="https://doi.org/10.1109/TIM.2026.3660401" data-i18n-html="paperButton"><i class="fa-regular fa-file-lines"></i> Paper</a>
+              <a class="text-button" href="assets/publications/vapsam/demo.mp4" data-i18n-html="demoButton"><i class="fa-regular fa-circle-play"></i> Demo</a>
               <button class="text-button" type="button" onclick="toggleBibtex('bib-vapsam')">
                 <i class="fa-solid fa-quote-right"></i> BibTeX
               </button>
             </div>
-            <p class="abstract">
+            <p class="abstract" data-i18n="abstractVapSam">
               Builds an open-source gas segmentation dataset and replaces manual prompt engineering with a
               visual autonomous perception module. The method distills prompt-trained SAM priors into a
               prompt-free segmentation pipeline.
@@ -870,7 +897,7 @@
 
         <article class="pub-item">
           <button class="media-frame media-zoom" type="button" data-media-type="image" data-media-src="assets/publications/emdetr/cover.png" data-media-alt="EM-DETR overview" aria-label="Enlarge EM-DETR cover image">
-            <img src="assets/publications/emdetr/cover.png" alt="EM-DETR overview">
+            <img src="assets/publications/emdetr/cover.png" alt="EM-DETR overview" loading="lazy">
           </button>
           <div>
             <h3 class="pub-title">
@@ -882,12 +909,12 @@
             </div>
             <div class="authors">Qi Wang, <span class="me">Shilin Zhu</span>, Zhenlin Lu, Yunlong Sun, Yizhuo Qian</div>
             <div class="pub-actions">
-              <a class="text-button" href="https://doi.org/10.1109/JSEN.2025.3558317"><i class="fa-regular fa-file-lines"></i> Paper</a>
+              <a class="text-button" href="https://doi.org/10.1109/JSEN.2025.3558317" data-i18n-html="paperButton"><i class="fa-regular fa-file-lines"></i> Paper</a>
               <button class="text-button" type="button" onclick="toggleBibtex('bib-emdetr')">
                 <i class="fa-solid fa-quote-right"></i> BibTeX
               </button>
             </div>
-            <p class="abstract">
+            <p class="abstract" data-i18n="abstractEmDetr">
               An efficient infrared gas leak detector that reduces redundant feature extraction, strengthens
               sensitivity to gas target spatial cues, and improves multi-scale feature fusion for small and
               diffuse gas regions.
@@ -907,22 +934,22 @@
       </section>
 
       <section id="experience">
-        <h2 class="section-title">Experience</h2>
+        <h2 class="section-title" data-i18n="experienceTitle">Experience</h2>
         <div class="experience-item">
           <div>
-            <h3>Data Simulation and Embodied Intelligence WAM Algorithms</h3>
-            <div class="experience-place">
+            <h3 data-i18n="experienceHeading">Data Simulation and Embodied Intelligence WAM Algorithms</h3>
+            <div class="experience-place" data-i18n-html="experiencePlace">
               <a class="inline-link" href="https://paxini.com/cn/">PaXini Tech</a>, advised by
               <a class="inline-link" href="https://medialab.sjtu.edu.cn/author/zhengxue-cheng/">Prof. Zhengxue Cheng</a>
             </div>
             <ul class="compact-list">
-              <li>Retargeted hand-collected grasping data and used Isaac Lab to replay trajectories for LeRobot-style Pi0.5 training and real-world validation.</li>
-              <li>Pretrained a tactile encoder with MAE-style random masking to recover 3D point positions and tactile force signals.</li>
-              <li>Integrated tactile representations into Lingbot-VA with image and action denoising while preserving causal masking for future-frame isolation.</li>
+              <li data-i18n="experienceBullet1">Retargeted hand-collected grasping data and used Isaac Lab to replay trajectories for LeRobot-style Pi0.5 training and real-world validation.</li>
+              <li data-i18n="experienceBullet2">Pretrained a tactile encoder with MAE-style random masking to recover 3D point positions and tactile force signals.</li>
+              <li data-i18n="experienceBullet3">Integrated tactile representations into Lingbot-VA with image and action denoising while preserving causal masking for future-frame isolation.</li>
             </ul>
             <div class="experience-gallery" aria-label="PaXini experience photos">
-              <img src="assets/experience/paxini/paxini.png" alt="PaXini experience photo 1">
-              <img src="assets/experience/paxini/paxini2.png" alt="PaXini experience photo 2">
+              <img src="assets/experience/paxini/paxini.jpg" alt="PaXini experience photo 1" loading="lazy">
+              <img src="assets/experience/paxini/paxini2.jpg" alt="PaXini experience photo 2" loading="lazy">
             </div>
           </div>
           <div class="experience-date">2025.12 - 2026.04</div>
@@ -930,14 +957,14 @@
       </section>
 
       <section id="honors">
-        <h2 class="section-title">Honors & Awards</h2>
+        <h2 class="section-title" data-i18n="honorsTitle">Honors & Awards</h2>
         <ul class="honor-list">
-          <li>Shenyang Aircraft Corporation Luo Yang Inspirational Scholarship, 2026</li>
-          <li>First-class Scholarship, Northeastern University, 2023, 2024, 2025</li>
-          <li>Outstanding Graduate of Anhui Province, 2023</li>
-          <li>National First Prize, National University Student Intelligent Car Race, 2022</li>
-          <li>First Prize, Anhui Electronic Design Competition, 2022</li>
-          <li>National Inspirational Scholarship, 2020</li>
+          <li data-i18n="honor1">Shenyang Aircraft Corporation Luo Yang Inspirational Scholarship, 2026</li>
+          <li data-i18n="honor2">First-class Scholarship, Northeastern University, 2023, 2024, 2025</li>
+          <li data-i18n="honor3">Outstanding Graduate of Anhui Province, 2023</li>
+          <li data-i18n="honor4">National First Prize, National University Student Intelligent Car Race, 2022</li>
+          <li data-i18n="honor5">First Prize, Anhui Electronic Design Competition, 2022</li>
+          <li data-i18n="honor6">National Inspirational Scholarship, 2020</li>
         </ul>
       </section>
     </main>
@@ -953,6 +980,114 @@
   </div>
 
   <script>
+    const translations = {
+      en: {
+        languageToggle: "中文",
+        role: "Third-year M.S. Student<br>Northeastern University",
+        affiliation: "College of Information Science and Engineering, NEU",
+        location: "Shenyang, China",
+        navAbout: "About",
+        navNews: "News",
+        navPublications: "Publications",
+        navExperience: "Experience",
+        navHonors: "Honors",
+        aboutTitle: "About Me",
+        aboutP1: 'I am a third-year master\'s student in <strong>Control Science and Engineering</strong> at <a class="inline-link" href="https://www.neu.edu.cn/">Northeastern University</a>. I will soon join <a class="inline-link" href="https://www.sjtu.edu.cn/">Shanghai Jiao Tong University</a> as a research assistant, advised by <a class="inline-link" href="https://naoce.sjtu.edu.cn/teachers/10294.html">Prof. Daolin Ma</a>.',
+        aboutP2: "My research focuses on <strong>3D computer vision</strong> and <strong>embodied intelligence</strong>, especially scalable 3D perception, scene completion, and robot manipulation.",
+        recentFocus: "<strong>Recent focus:</strong> I am working on World Action Model research for embodied algorithms, with an emphasis on perception-conditioned robot manipulation.",
+        newsTitle: "News",
+        newsPatchScene: "PatchScene was accepted to <strong>CVPR 2026</strong>.",
+        newsVapSam: "VAP-SAM was accepted by <strong>IEEE Transactions on Instrumentation and Measurement</strong>.",
+        newsEmDetr: "EM-DETR was accepted by <strong>IEEE Sensors Journal</strong>.",
+        publicationsTitle: "Publications",
+        equalContribution: "(* Equal contribution)",
+        coFirstAuthor: "Co-first Author",
+        paperButtonPdf: '<i class="fa-regular fa-file-pdf"></i> Paper',
+        paperButton: '<i class="fa-regular fa-file-lines"></i> Paper',
+        demoButton: '<i class="fa-regular fa-circle-play"></i> Demo',
+        abstractPatchScene: "A diffusion framework for large-scale LiDAR scene completion. PatchScene generates fine-grained geometry in local voxel patches, fuses spatial and temporal context, and expands completion through an annular-flow strategy for scalable outdoor reconstruction.",
+        abstractVapSam: "Builds an open-source gas segmentation dataset and replaces manual prompt engineering with a visual autonomous perception module. The method distills prompt-trained SAM priors into a prompt-free segmentation pipeline.",
+        abstractEmDetr: "An efficient infrared gas leak detector that reduces redundant feature extraction, strengthens sensitivity to gas target spatial cues, and improves multi-scale feature fusion for small and diffuse gas regions.",
+        experienceTitle: "Experience",
+        experienceHeading: "Data Simulation and Embodied Intelligence WAM Algorithms",
+        experiencePlace: '<a class="inline-link" href="https://paxini.com/cn/">PaXini Tech</a>, advised by <a class="inline-link" href="https://medialab.sjtu.edu.cn/author/zhengxue-cheng/">Prof. Zhengxue Cheng</a>',
+        experienceBullet1: "Retargeted hand-collected grasping data and used Isaac Lab to replay trajectories for LeRobot-style Pi0.5 training and real-world validation.",
+        experienceBullet2: "Pretrained a tactile encoder with MAE-style random masking to recover 3D point positions and tactile force signals.",
+        experienceBullet3: "Integrated tactile representations into Lingbot-VA with image and action denoising while preserving causal masking for future-frame isolation.",
+        honorsTitle: "Honors & Awards",
+        honor1: "Shenyang Aircraft Corporation Luo Yang Inspirational Scholarship, 2026",
+        honor2: "First-class Scholarship, Northeastern University, 2023, 2024, 2025",
+        honor3: "Outstanding Graduate of Anhui Province, 2023",
+        honor4: "National First Prize, National University Student Intelligent Car Race, 2022",
+        honor5: "First Prize, Anhui Electronic Design Competition, 2022",
+        honor6: "National Inspirational Scholarship, 2020"
+      },
+      zh: {
+        languageToggle: "English",
+        role: "东北大学三年级硕士生",
+        affiliation: "东北大学信息科学与工程学院",
+        location: "中国沈阳",
+        navAbout: "关于",
+        navNews: "动态",
+        navPublications: "论文",
+        navExperience: "经历",
+        navHonors: "荣誉",
+        aboutTitle: "关于我",
+        aboutP1: '我是<a class="inline-link" href="https://www.neu.edu.cn/">东北大学</a><strong>控制科学与工程</strong>专业三年级硕士生，即将前往<a class="inline-link" href="https://www.sjtu.edu.cn/">上海交通大学</a>担任研究助理，导师为<a class="inline-link" href="https://naoce.sjtu.edu.cn/teachers/10294.html">马道林教授</a>。',
+        aboutP2: "我的研究方向为<strong>三维计算机视觉</strong>和<strong>具身智能</strong>，关注可扩展三维感知、场景补全以及机器人操作。",
+        recentFocus: "<strong>近期方向：</strong>我正在围绕具身算法中的 World Action Model 开展机器人操作研究，重点关注由感知条件驱动的机器人操作策略。",
+        newsTitle: "动态",
+        newsPatchScene: "PatchScene 被 <strong>CVPR 2026</strong> 接收。",
+        newsVapSam: "VAP-SAM 被 <strong>IEEE Transactions on Instrumentation and Measurement</strong> 接收。",
+        newsEmDetr: "EM-DETR 被 <strong>IEEE Sensors Journal</strong> 接收。",
+        publicationsTitle: "论文",
+        equalContribution: "（* 共同一作）",
+        coFirstAuthor: "共同一作",
+        paperButtonPdf: '<i class="fa-regular fa-file-pdf"></i> 论文',
+        paperButton: '<i class="fa-regular fa-file-lines"></i> 论文',
+        demoButton: '<i class="fa-regular fa-circle-play"></i> 演示',
+        abstractPatchScene: "PatchScene 是面向大规模 LiDAR 场景补全的扩散框架，在局部体素 patch 中生成精细几何结构，并融合空间与时间上下文，通过环形流式策略实现可扩展的室外场景重建。",
+        abstractVapSam: "VAP-SAM 构建了开源气体分割数据集，用视觉自主感知模块替代人工 prompt 设计，并将基于 prompt 训练的 SAM 先验蒸馏到无需 prompt 的分割流程中。",
+        abstractEmDetr: "EM-DETR 是一种面向红外气体泄漏检测的高效多尺度 DETR，减少冗余特征提取，增强模型对气体目标空间线索的敏感性，并提升小尺度和弥散气体区域的多尺度特征融合能力。",
+        experienceTitle: "经历",
+        experienceHeading: "数据仿真与具身智能 WAM 算法",
+        experiencePlace: '<a class="inline-link" href="https://paxini.com/cn/">PaXini Tech</a>，导师：<a class="inline-link" href="https://medialab.sjtu.edu.cn/author/zhengxue-cheng/">程正雪教授</a>',
+        experienceBullet1: "对人工采集的抓取数据进行 retargeting，并使用 Isaac Lab 回放轨迹，导出 LeRobot 格式用于 Pi0.5 训练和真机验证。",
+        experienceBullet2: "使用 MAE 式随机遮挡预训练触觉编码器，恢复三维点位置与触觉力信号。",
+        experienceBullet3: "将触觉表征接入 Lingbot-VA，结合图像和动作去噪，并通过 causal mask 保持未来帧隔离。",
+        honorsTitle: "荣誉与奖项",
+        honor1: "沈飞罗阳励志奖学金，2026",
+        honor2: "东北大学一等奖学金，2023，2024，2025",
+        honor3: "安徽省优秀毕业生，2023",
+        honor4: "全国大学生智能汽车竞赛一等奖，2022",
+        honor5: "安徽省电子设计竞赛一等奖，2022",
+        honor6: "国家励志奖学金，2020"
+      }
+    };
+
+    function applyLanguage(lang) {
+      const selected = translations[lang] ? lang : "en";
+      const labels = translations[selected];
+      document.documentElement.lang = selected === "zh" ? "zh-CN" : "en";
+      document.body.dataset.lang = selected;
+      localStorage.setItem("preferredLanguage", selected);
+
+      document.querySelectorAll("[data-i18n]").forEach((node) => {
+        const key = node.dataset.i18n;
+        if (labels[key]) node.textContent = labels[key];
+      });
+
+      document.querySelectorAll("[data-i18n-html]").forEach((node) => {
+        const key = node.dataset.i18nHtml;
+        if (labels[key]) node.innerHTML = labels[key];
+      });
+    }
+
+    function toggleLanguage() {
+      const current = document.body.dataset.lang || "en";
+      applyLanguage(current === "en" ? "zh" : "en");
+    }
+
     function toggleBibtex(id) {
       const block = document.getElementById(id);
       if (!block) return;
@@ -973,6 +1108,7 @@
         video.loop = true;
         video.muted = true;
         video.playsInline = true;
+        video.preload = "metadata";
         body.appendChild(video);
       } else {
         const image = document.createElement("img");
@@ -1010,6 +1146,8 @@
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape") closeLightbox();
     });
+
+    applyLanguage(localStorage.getItem("preferredLanguage") || "en");
   </script>
 </body>
 </html>
